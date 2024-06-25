@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blaze Domination</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <section id="stars">
+    </section>
+    <section id="home" class="reveal">
+        <section id="home_">
+            <section id="showcase">
+                <h2 id="ph">Play Hard</h2>
+                <h2 id="wh">Win Hard</h2>
+            </section>
+            <p>Prove the skills and grab the prize.</p>
+            <a href="{{ url_for('register')}}">Register Now <i class="fas fa-arrow-circle-right"></i></a>
+            <div id="arrow-down">
+                <i class="fas fa-angle-double-down"></i>
+            </div>
+        </section>
+    </section>
+    <section id="sup" class="reveal">
+        <section id="sp">
+            <div id="one">
+                <h2>100+</h2>
+                <p>DAILY PLAYERS</p>
+            </div>
+            <div id="two">
+                <h2>300+</h2>
+                <p>USD DISTRIBUTED</p>
+            </div>
+            <div id="two">
+                <h2>24/7</h2>
+                <p>CUSTOMER SUPPORT</p>
+            </div>
+        </section>
+    </section>
+    <section id="about" class="reveal">
+        <div id="img_box">
+            <img src="../static/img_2.jpg" alt="">
+        </div>
+        <section id="about_">
+            <header>
+                <h2>What we offer ?</h2>
+            </header>
+            <section id="content">
+                <p>
+                    <b>Exciting Tournaments: </b>We host regular tournaments with varying entry fees and prize pools, ensuring that there's always an opportunity for you to shine.
+                </p>
+                <p>
+                    <b>Fair Play: </b>Our tournaments are governed by strict rules and regulations to ensure a fair and competitive environment for all participants.
+                </p>
+            </section>
+        </section>
+    </section>
+    <section id="get_in" class="reveal">
+        <section id="get">
+            <header>
+                <h2>Get In Touch</h2>
+            </header>
+            <p>We love hearing from our community! If you have any questions, suggestions, or feedback, don't hesitate to reach out to us.</p>
+            <form action="/email_submit" method="post" id="email_form">
+                <input type="text" name="name" placeholder="Your name">
+                <textarea name="message" placeholder="Your message"></textarea>
+                <button type="submit">SUBMIT</button>
+            </form>
+        </section>
+    </section>
+    <footer>
+        <p>@BLAZE DOMINATION</p>
+    </footer>
+    <div id="boxes">
+        <div id="box"></div>
+        <div id="box"></div>
+    </div>
+    <script src="{{ url_for('static', filename='main.js')}}"></script>
+    <script src="https://kit.fontawesome.com/095e9d605c.js" crossorigin="anonymous"></script>
+</body>
+</html>

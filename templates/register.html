@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter the tournament</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Marcellus&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "Marcellus", serif;
+            box-sizing: border-box;
+            text-transform: uppercase;
+        }
+        footer{
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 20px;
+        }
+        footer p{
+            color: #cfcfcf;
+        }
+        body{
+            background: #0e0e0e;
+            color: #fff;
+        }
+        section{
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 290px;
+            padding: 20px;
+            border: 1px solid #545454;
+            background: #0e0e0e;
+
+        }
+@keyframes animate {
+    0%{
+        transform: translate(0px, 0px);
+    }
+    50%{
+        transform: translate(5px,15px);
+    }
+    100%{
+        transform: translate(0px, 0px);
+    }
+}
+        header{
+            text-align: center;
+            padding: 10px;
+            line-height: 1;
+        }
+        header h2{
+            font-size: 1.8em;
+        }
+        header h4{
+            font-size: 1em;
+            color: #fff;
+            letter-spacing: 1.4px;
+        }
+        form input{
+            border: none;
+            border-bottom: 1px solid #7a7a7a;
+            background: transparent;
+            outline: none;
+            padding: 10px;
+            margin: 10px;
+            color: #fff;
+            transition: 500ms;
+            letter-spacing: 1.3px;
+        }
+        form input:focus{
+            border-bottom: 1px solid #fff;
+        }
+        button{
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #fff;
+            transition: 300ms;
+            background-color: #fff;
+            color: #0e0e0e;
+        }
+        button:hover{
+            background: transparent;
+            outline: none;
+            color: #fff;
+        }
+        button:disabled{
+            background-color: #7a7a7a;
+            border-color: #7a7a7a;
+            color: #fff;
+            cursor: not-allowed;
+        }
+        form p{
+            font-family: "Roboto", sans-serif;
+            text-transform: none;
+            color: #acacac;
+            margin: 5px;
+        }
+        span{
+            font-family: "Roboto", sans-serif;
+            color: #006fff;
+        }
+        b{
+            color: #ff3275;
+        }
+.star{
+    width: 1.5px;
+    height: 1.5px;
+    border-radius: 50%;
+    position: fixed;
+    z-index: -1;
+    animation: animate 7s infinite ease;
+}
+#stars{
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+    </style>
+</head>
+<body>
+    <section id="stars"></section>
+    <section>
+        <form action="/submit" method="post" id="tournamentForm">
+            <header>
+            <h2>free-fire</h2>
+            <h4>TOURNAMENT</h4>
+            </header>
+            <input type="text" name="name" placeholder="Name" required autocomplete="off">
+            <input type="text" name="uid" placeholder="UID" required autocomplete="off" id="uid" oninput="restrictInputToNumbers(event)" minlength="9" maxlength="9">
+            <input type="text" name="upi" placeholder="UPI ID" required>
+            <input type="text" name="whatsapp" placeholder="WhatsApp No" required>
+            <p><b>*</b> You will receive the match information on your WhatsApp.</p>
+            <p><b>*</b> Enter the UPI ID where you want to receive the prize.</p>
+            <button type="submit" id="subb" disabled>ENTER</button>
+        </form>
+    </section>
+    <script>
+        function restrictInputToNumbers(event) {
+            const input = event.target;
+            const submitButton = document.querySelector("#subb");
+            
+            input.value = input.value.replace(/[^0-9]/g, '');
+            
+            if (input.value.length > 9) {
+                input.value = input.value.slice(0, 9);
+            }
+
+            submitButton.disabled = input.value.length !== 9;
+        }
+        const stars = document.querySelector("#stars");
+const colors = ["#fff", "#333", "#eee", "#777"]
+for(let i = 0; i < 100; i++){
+    const star = document.createElement("div");
+    star.classList.add("star");
+    star.style.top = (Math.random() * window.innerHeight + 10) + "px";
+    star.style.left = (Math.random() * window.innerWidth + 10) + "px";
+    star.style.background = colors[Math.floor(Math.random() * colors.length)];
+    stars.appendChild(star)
+}
+window.addEventListener("scroll", reveal)
+const sections = document.querySelectorAll(".reveal");
+function reveal(){
+    for(let i = 0; i < sections.length; i++){
+        var windowheight = window.innerHeight;
+        var revealheight = sections[i].getBoundingClientRect().top;
+        var reveal_point = 150;
+
+        if(revealheight < windowheight - reveal_point){
+            sections[i].classList.add("active")
+        } else {
+            sections[i].classList.remove("active")
+        }
+    }
+}
+    </script>
+    <footer>
+        <p>BLAZE DOMINATION</p>
+    </footer>
+</body>
+</html>
